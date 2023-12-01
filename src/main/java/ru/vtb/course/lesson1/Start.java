@@ -14,21 +14,37 @@ public class Start {
         acc1.setCurrQuantity(Currency.RUB, 20);
         acc1.setCurrQuantity(Currency.USD, 100);
         System.out.println(acc1);
-        acc1.undo();
-        System.out.println("== UNDO_1 ==");
-        System.out.println(acc1);
+        if (acc1.checkUndo()) {
+            acc1.undo();
+            System.out.println("== UNDO_1 ==");
+            System.out.println(acc1);
+        }
 
-        acc1.undo();
-        System.out.println("== UNDO_2 ==");
-        System.out.println(acc1);
+        if (acc1.checkUndo()) {
+            acc1.undo();
+            System.out.println("== UNDO_2 ==");
+            System.out.println(acc1);
+        }
 
-        acc1.undo();
-        System.out.println("== UNDO_3 ==");
-        System.out.println(acc1);
+        if (acc1.checkUndo()) {
+            acc1.undo();
+            System.out.println("== UNDO_3 ==");
+            System.out.println(acc1);
+        }
 
-        acc1.undo();
-        System.out.println("== UNDO_4 ==");
-        System.out.println(acc1);
+        if (acc1.checkUndo()) {
+            acc1.undo();
+            System.out.println("== UNDO_4 ==");
+            System.out.println(acc1);
+        }
+
+        if (acc1.checkUndo()) {
+            acc1.undo();
+            System.out.println("== UNDO_5 ==");
+            System.out.println(acc1);
+        } else {
+            System.out.println("!!! UNDO_5 impossible");
+        }
 
         System.out.println("== SAVE ==");
         SaveAccount sa = acc1.save();
@@ -78,10 +94,13 @@ class Account {
         }
         this.currQuantity.put(cur,quantity);
     }
+    public boolean checkUndo() {
+        if (commandStack.size() > 1) return true;
+        return false;
+    }
     public Account undo() {
-        if (commandStack.size() > 1) {
-            commandStack.pop().run();
-        }
+        if (commandStack.size() <= 1) throw new RuntimeException("No changes to undo");
+        commandStack.pop().run();
         return this;
     }
 

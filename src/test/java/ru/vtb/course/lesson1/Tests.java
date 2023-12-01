@@ -64,10 +64,7 @@ public class Tests {
                         && acc1.getCurrQuantity().isEmpty()
                 , "Undo 4 not correct");
 
-        acc1.undo();
-        Assertions.assertTrue( acc1.getName().equals("Account 1")
-                        && acc1.getCurrQuantity().isEmpty()
-                , "Undo 5 not correct");
+        Assertions.assertThrows( RuntimeException.class, () -> acc1.undo() );
     }
 
     @Test
