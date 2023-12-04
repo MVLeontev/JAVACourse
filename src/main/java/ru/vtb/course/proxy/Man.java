@@ -57,6 +57,6 @@ public class Man implements Person {
 
     @Override
     public void sayFrom(String city, String country) {
-
+        System.out.println("Я из города " + this.city + ", " + this.country);
     }
 }
