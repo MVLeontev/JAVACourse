@@ -29,12 +29,12 @@ public class ObjectInvocationHandler<T> implements InvocationHandler {
         }
 
         if (currentMethod.isAnnotationPresent(Cache.class)){            //если пришел кашированный метод
-            if (methodStore.containsKey(method)) {                      // если этот метод уже запускался - есть в хешмап -
-                objectResult = methodStore.get(method);                 // то будем возвращать результат его прошлого запуска
+            if (methodStore.containsKey(currentMethod)) {                      // если этот метод уже запускался - есть в хешмап -
+                objectResult = methodStore.get(currentMethod);                 // то будем возвращать результат его прошлого запуска
                 //System.out.println("Метод кэширован");
             } else {                                                    // а если не запускался - нет в хешмап -
                 objectResult = method.invoke(currentObject, args);      // то выполним метод
-                methodStore.put(method, objectResult);                  // и занесем в хешмап
+                methodStore.put(currentMethod, objectResult);                  // и занесем в хешмап
             }
             return objectResult;
         }
