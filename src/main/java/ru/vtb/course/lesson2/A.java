@@ -12,4 +12,10 @@ public class A implements Able{
     public void setValue() {
         System.out.println("Вызван сеттер");
     }
+    @Cache
+    @Override
+    public int testCache(int val) {
+        return val;
+    }
+
 }

@@ -6,9 +6,11 @@ public class Utils {
     public static <T> T cache(T objectIncome) {
 
         ClassLoader objectIncomeClassLoader = objectIncome.getClass().getClassLoader();
-        Class[] interfaces = objectIncome.getClass().getInterfaces();
+        Class[] objectIncomeInterfaces = objectIncome.getClass().getInterfaces();
 
-        T proxyObject = (T) Proxy.newProxyInstance(objectIncomeClassLoader, interfaces, new ObjectInvocationHandler<T>(objectIncome));
+        T proxyObject = (T) Proxy.newProxyInstance( objectIncomeClassLoader,
+                                                    objectIncomeInterfaces,
+                                                    new ObjectInvocationHandler<T>(objectIncome));
 
         return proxyObject;
 
