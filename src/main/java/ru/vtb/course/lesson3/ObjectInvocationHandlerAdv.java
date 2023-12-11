@@ -22,7 +22,7 @@ public class ObjectInvocationHandlerAdv<T> implements InvocationHandler {
                     public void run() {
                         methStore.values().removeIf( value -> !((ResultAndTimeout) value).isActual() );
                     }
-                }, 1000, 1000);
+                }, 500, 1000);
     }
 
     @Override
