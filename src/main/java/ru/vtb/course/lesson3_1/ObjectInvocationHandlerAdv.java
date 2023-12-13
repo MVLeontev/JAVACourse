@@ -1,4 +1,4 @@
-package ru.vtb.course.lesson3;
+package ru.vtb.course.lesson3_1;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

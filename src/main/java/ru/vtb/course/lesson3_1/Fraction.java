@@ -1,6 +1,4 @@
-package ru.vtb.course.lesson3;
-
-import java.util.Objects;
+package ru.vtb.course.lesson3_1;
 
 public class Fraction implements Fractionable{
     private int num;

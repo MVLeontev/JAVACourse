@@ -2,7 +2,7 @@
 // для хранения кэша используется потокобезопасная коллекция ConcurrentHashMap
 // для корректного кэширования в классе д.б. реализован метод toString
 
-package ru.vtb.course.lesson3;
+package ru.vtb.course.lesson3_1;
 
 public class Start {
     public static void main(String[] args) throws InterruptedException {

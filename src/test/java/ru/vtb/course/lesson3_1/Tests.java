@@ -1,4 +1,4 @@
-package ru.vtb.course.lesson3;
+package ru.vtb.course.lesson3_1;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
