@@ -52,13 +52,13 @@ public class Tests {
     @BeforeEach
     public void initTest() {
         a1 = new A(2, 4);
-        able = Utils.cache(a1);
     }
 
 
     @Test
     @DisplayName("Проверка Кеширования после создания объекта")
     public void testFirstCache() {
+        able = Utils.cache(a1, true);
         A.flag = 0;
         //первый вызов, кэш пустой, ожидаем выполнение метода, на выходе 0,5 и взведение флага в 1
         Assertions.assertTrue(able.doubleValue() == 0.5 &&  A.flag == 1, "Ошибка кэширования первого вызова"  );
@@ -69,6 +69,7 @@ public class Tests {
     @Test
     @DisplayName("Проверка кеширования после изменения объекта")
     public void testChangeObject() {
+        able = Utils.cache(a1, true);
         able.doubleValue(); // заполнили кэш значениями 2,4
         able.doubleValue(); // попали в кэш
         able.setNum(6);     // изменили объект, теперь там 6,4
@@ -82,6 +83,7 @@ public class Tests {
     @Test
     @DisplayName("Проверка кэширования после возврата объекта в предыдущее состояние")
     public void testAfterReturn() {
+        able = Utils.cache(a1, true);
         able.doubleValue(); // заполнили кэш значениями 2,4
         able.doubleValue(); // попали в кэш
         able.setNum(6);     // изменили объект, теперь там 6,4
@@ -96,6 +98,7 @@ public class Tests {
     @Test
     @DisplayName("Проверка сброса кэша по таймауту")
     public void testClearCache() throws InterruptedException {
+        able = Utils.cache(a1, true);
         able.doubleValue(); // заполнили кэш значениями 2,4
         able.setNum(6);     // изменили объект, теперь там 6,4
         able.doubleValue(); // заполнили кэш значениями 6,4
@@ -103,6 +106,24 @@ public class Tests {
         A.flag = 0;
         // ожидаем очистки кэша, значит метод вернет 1,5 и взведет флаг
         Assertions.assertTrue(able.doubleValue() == 1.5 &&  A.flag == 1, "Ошибка после сброса кэша по таймауту" );
+    }
+
+    @Test
+    @DisplayName("Проверка многопоточной блокировки (длительный тест)")
+    public void testConcurrentLock() throws InterruptedException {
+        //сравним кол-во потоков в начале и в цикле. Если меньше - значит отвалился поток очистки
+        able = Utils.cache(a1, true);
+        int threadsCount = Thread.activeCount();
+        for (int i = 0; i < 1000; i++) {
+            int val = (int)(Math.random() * 100);
+            Thread.sleep(10);
+            able.doubleValue();
+            able.doubleValue();
+            able.setNum(val);
+            able.doubleValue();
+            able.doubleValue();
+            if (threadsCount > Thread.activeCount()) throw new RuntimeException("поток остановлен");
+        }
     }
 
 }

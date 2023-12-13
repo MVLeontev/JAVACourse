@@ -7,7 +7,7 @@ package ru.vtb.course.lesson3;
 public class Start {
     public static void main(String[] args) throws InterruptedException {
         Fraction fr1 = new Fraction(2, 4);
-        Fractionable num1 = Utils.cache(fr1);
+        Fractionable num1 = Utils.cache(fr1, true);
 
         System.out.println(num1.doubleValue());
         System.out.println(num1.doubleValue());

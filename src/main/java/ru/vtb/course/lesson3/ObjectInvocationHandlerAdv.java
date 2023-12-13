@@ -2,29 +2,39 @@ package ru.vtb.course.lesson3;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ObjectInvocationHandlerAdv<T> implements InvocationHandler {
     private T currentObject;
+    private boolean runCleaner;
     private ConcurrentHashMap<KeyObjAndMeth, ResultAndTimeout> methStore = new ConcurrentHashMap<>();
-    Timer timer = new Timer("GarbageCleaner", true);
-    public ObjectInvocationHandlerAdv(T currentObject) {
+    public ObjectInvocationHandlerAdv(T currentObject, boolean runCleaner) {
 
         this.currentObject = currentObject;
-
-        timer.schedule(
-                new TimerTask() {
-                    @Override
-                    public void run() {
-                        methStore.values().removeIf( value -> !((ResultAndTimeout) value).isActual() );
+        if (runCleaner) {
+            System.out.println("GarbageCleaner запускается");
+            Thread t = new Thread(
+                    () -> {
+                        boolean interrupt = false;
+                        while (true) {
+                            if (Thread.currentThread().isInterrupted() || interrupt) break;
+                            startCleaner();
+                            try {
+                                Thread.sleep(500);
+                            } catch (InterruptedException e) {
+                                interrupt = true;
+                            }
+                        }
                     }
-                }, 500, 1000);
+            );
+            t.setDaemon(true);
+            t.start();
+        }
     }
-
+    public void startCleaner() {
+        methStore.values().removeIf(value -> !((ResultAndTimeout) value).isActual());
+    }
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Object objectResult;
@@ -40,7 +50,7 @@ public class ObjectInvocationHandlerAdv<T> implements InvocationHandler {
             ResultAndTimeout resultAndTimeout = methStore.get(new KeyObjAndMeth(currentObject.toString(), currentMethod));
             if (resultAndTimeout != null) {
                 objectResult = resultAndTimeout.result;
-                System.out.println("попали в кэш");
+                //System.out.println("попали в кэш");
             } else {
                 objectResult = method.invoke(currentObject, args);
             }
