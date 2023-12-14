@@ -9,12 +9,13 @@ public class ObjectInvocationHandlerAdv<T> implements InvocationHandler {
     private T currentObject;
     private boolean runCleaner;
     private ConcurrentHashMap<KeyObjAndMeth, ResultAndTimeout> methStore = new ConcurrentHashMap<>();
+    private Thread thread;
     public ObjectInvocationHandlerAdv(T currentObject, boolean runCleaner) {
 
         this.currentObject = currentObject;
         if (runCleaner) {
             System.out.println("GarbageCleaner запускается");
-            Thread t = new Thread(
+            thread = new Thread(
                     () -> {
                         boolean interrupt = false;
                         while (true) {
@@ -28,8 +29,8 @@ public class ObjectInvocationHandlerAdv<T> implements InvocationHandler {
                         }
                     }
             );
-            t.setDaemon(true);
-            t.start();
+            thread.setDaemon(true);
+            thread.start();
         }
     }
     public void startCleaner() {

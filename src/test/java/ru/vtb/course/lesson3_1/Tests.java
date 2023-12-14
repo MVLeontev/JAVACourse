@@ -5,6 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Proxy;
+
 public class Tests {
     private  A a1;
     private Able able;
@@ -111,7 +114,9 @@ public class Tests {
     @Test
     @DisplayName("Проверка многопоточной блокировки (длительный тест)")
     public void testConcurrentLock() throws InterruptedException {
+        // тест не проходит если вместо ConcurrentHashMap использовать обычный HashMap
         //сравним кол-во потоков в начале и в цикле. Если меньше - значит отвалился поток очистки
+
         able = Utils.cache(a1, true);
         int threadsCount = Thread.activeCount();
         for (int i = 0; i < 1000; i++) {
@@ -122,7 +127,34 @@ public class Tests {
             able.setNum(val);
             able.doubleValue();
             able.doubleValue();
+
             if (threadsCount > Thread.activeCount()) throw new RuntimeException("поток остановлен");
+        }
+    }
+
+    @Test
+    @DisplayName("Проверка многопоточной блокировки через рефлексию")
+    public void testConcurrentLockReflection() throws InterruptedException, NoSuchFieldException, IllegalAccessException {
+        // тест не проходит если вместо ConcurrentHashMap использовать обычный HashMap
+        // с помощью рефлексии достанем ссылку на поток и проверим его состояние. Поток должен работать, если не активен до завершения оновного потока - значит он упал
+        able = Utils.cache(a1, true);
+        //получим через рефлексию ссылку на проксю
+        ObjectInvocationHandlerAdv invocationHandler = (ObjectInvocationHandlerAdv) Proxy.getInvocationHandler(able);
+        //получаем ссылку на поток
+        Field threadField = invocationHandler.getClass().getDeclaredField("thread");
+        threadField.setAccessible(true);
+        Thread t = (Thread) threadField.get(invocationHandler);
+
+        for (int i = 0; i < 1000; i++) {
+            int val = (int)(Math.random() * 100);
+            Thread.sleep(10);
+            able.doubleValue();
+            able.doubleValue();
+            able.setNum(val);
+            able.doubleValue();
+            able.doubleValue();
+
+            if (!t.isAlive()) throw new RuntimeException("поток остановлен");
         }
     }
 
