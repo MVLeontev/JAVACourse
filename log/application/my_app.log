@@ -2695,3 +2695,152 @@ Caused by: org.postgresql.util.PSQLException: ERROR: cannot drop schema task4 be
 22:03:25.017 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;Леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;Петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;Иванов;Иван;Иванович;03.03.2023;other:phone;file1.txt, mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
 22:03:25.017 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
 22:03:25.596 [main] ERROR r.v.c.l.datawriter.DataWriter - Illegal Date format in string: mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt
+09:34:42.687 [main] INFO  r.v.c.l.Lesson41ApplicationTests - Starting Lesson41ApplicationTests using Java 20.0.2 with PID 6808 (started by mikev in C:\Users\mikev\IdeaProjects\Step2\lesson4_1)
+09:34:42.698 [main] INFO  r.v.c.l.Lesson41ApplicationTests - No active profile set, falling back to 1 default profile: "default"
+09:34:51.320 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+09:34:58.436 [main] INFO  r.v.c.l.Lesson41ApplicationTests - Started Lesson41ApplicationTests in 17.011 seconds (process running for 23.37)
+09:35:00.468 [main] INFO  r.v.c.lesson4_1.SaveToDatabaseTest - Starting SaveToDatabaseTest using Java 20.0.2 with PID 6808 (started by mikev in C:\Users\mikev\IdeaProjects\Step2\lesson4_1)
+09:35:00.469 [main] INFO  r.v.c.lesson4_1.SaveToDatabaseTest - No active profile set, falling back to 1 default profile: "default"
+09:35:02.316 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 2.2.0 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 11.0.0. Check the community dialects project for available legacy versions.
+09:35:02.316 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+09:35:03.041 [main] INFO  r.v.c.lesson4_1.SaveToDatabaseTest - Started SaveToDatabaseTest in 2.862 seconds (process running for 27.975)
+11:31:50.106 [main] INFO  ru.vtb.course.lesson4_1.Start - Starting Start using Java 20.0.2 with PID 16540 (C:\Users\mikev\IdeaProjects\Step2\lesson4_1\target\classes started by mikev in C:\Users\mikev\IdeaProjects\Step2\lesson4_1)
+11:31:50.112 [main] INFO  ru.vtb.course.lesson4_1.Start - No active profile set, falling back to 1 default profile: "default"
+11:31:55.599 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+11:31:59.155 [main] INFO  ru.vtb.course.lesson4_1.Start - Started Start in 9.982 seconds (process running for 11.422)
+11:31:59.187 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation begin =====================
+11:31:59.187 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Wed Dec 27 11:31:59 KRAT 2023
+11:31:59.188 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model ru.vtb.course.lesson4_1.datatransformer.AppTransformer.transform(Model)
+11:31:59.188 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - INPUT:
+11:31:59.189 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - [Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, sidorov;сидоров;иван;сидорович;;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}]
+11:31:59.189 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - OUTPUT:
+11:31:59.189 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, sidorov;сидоров;иван;сидорович;;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
+11:31:59.189 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
+11:31:59.190 [main] WARN  r.v.c.l.d.DateTransformer - Empty Date, string removed: sidorov;сидоров;иван;сидорович;;other:phone;file1.txt
+11:31:59.191 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation begin =====================
+11:31:59.192 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Wed Dec 27 11:31:59 KRAT 2023
+11:31:59.192 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model ru.vtb.course.lesson4_1.datatransformer.DateTransformer.transform(Model)
+11:31:59.192 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - INPUT:
+11:31:59.192 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - [Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}]
+11:31:59.193 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - OUTPUT:
+11:31:59.193 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
+11:31:59.193 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
+11:31:59.197 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation begin =====================
+11:31:59.197 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Wed Dec 27 11:31:59 KRAT 2023
+11:31:59.198 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model ru.vtb.course.lesson4_1.datatransformer.FioTransformer.transform(Model)
+11:31:59.198 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - INPUT:
+11:31:59.198 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - [Model{dataArr=[mike;Леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;Петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;Иванов;Иван;Иванович;03.03.2023;other:phone;file1.txt, mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}]
+11:31:59.198 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - OUTPUT:
+11:31:59.199 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;Леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;Петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;Иванов;Иван;Иванович;03.03.2023;other:phone;file1.txt, mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
+11:31:59.199 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
+11:31:59.728 [main] ERROR r.v.c.l.datawriter.DataWriter - Illegal Date format in string: mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt
+11:33:06.210 [main] INFO  ru.vtb.course.lesson4_1.Start - Starting Start using Java 20.0.2 with PID 13504 (C:\Users\mikev\IdeaProjects\Step2\lesson4_1\target\classes started by mikev in C:\Users\mikev\IdeaProjects\Step2\lesson4_1)
+11:33:06.214 [main] INFO  ru.vtb.course.lesson4_1.Start - No active profile set, falling back to 1 default profile: "default"
+11:33:10.870 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+11:33:14.095 [main] INFO  ru.vtb.course.lesson4_1.Start - Started Start in 8.721 seconds (process running for 10.062)
+11:33:14.126 [main] WARN  r.v.c.l.d.DateTransformer - Empty Date, string removed: sidorov;сидоров;иван;сидорович;;other:phone;file1.txt
+11:33:14.128 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation begin =====================
+11:33:14.128 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Wed Dec 27 11:33:14 KRAT 2023
+11:33:14.130 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model ru.vtb.course.lesson4_1.datatransformer.DateTransformer.transform(Model)
+11:33:14.131 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - INPUT:
+11:33:14.131 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - [Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}]
+11:33:14.132 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - OUTPUT:
+11:33:14.132 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
+11:33:14.132 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
+11:33:14.134 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation begin =====================
+11:33:14.134 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Wed Dec 27 11:33:14 KRAT 2023
+11:33:14.135 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model ru.vtb.course.lesson4_1.datatransformer.FioTransformer.transform(Model)
+11:33:14.135 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - INPUT:
+11:33:14.135 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - [Model{dataArr=[mike;Леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;Петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;Иванов;Иван;Иванович;03.03.2023;other:phone;file1.txt, mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}]
+11:33:14.135 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - OUTPUT:
+11:33:14.136 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;Леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;Петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;Иванов;Иван;Иванович;03.03.2023;other:phone;file1.txt, mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
+11:33:14.136 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
+11:33:14.714 [main] ERROR r.v.c.l.datawriter.DataWriter - Illegal Date format in string: mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt
+11:35:46.424 [main] INFO  ru.vtb.course.lesson4_1.Start - Starting Start using Java 20.0.2 with PID 1116 (C:\Users\mikev\IdeaProjects\Step2\lesson4_1\target\classes started by mikev in C:\Users\mikev\IdeaProjects\Step2\lesson4_1)
+11:35:46.429 [main] INFO  ru.vtb.course.lesson4_1.Start - No active profile set, falling back to 1 default profile: "default"
+11:35:50.967 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+11:35:54.160 [main] INFO  ru.vtb.course.lesson4_1.Start - Started Start in 8.583 seconds (process running for 9.866)
+11:35:54.193 [main] WARN  r.v.c.l.d.DateTransformer - Empty Date, string removed: sidorov;сидоров;иван;сидорович;;other:phone;file1.txt
+11:35:54.194 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation begin =====================
+11:35:54.194 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Wed Dec 27 11:35:54 KRAT 2023
+11:35:54.195 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model ru.vtb.course.lesson4_1.datatransformer.DateTransformer.transform(Model)
+11:35:54.195 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - INPUT:
+11:35:54.195 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - [Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}]
+11:35:54.196 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - OUTPUT:
+11:35:54.196 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
+11:35:54.196 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
+11:35:54.200 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation begin =====================
+11:35:54.201 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Wed Dec 27 11:35:54 KRAT 2023
+11:35:54.201 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model ru.vtb.course.lesson4_1.datatransformer.FioTransformer.transform(Model)
+11:35:54.202 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - INPUT:
+11:35:54.202 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - [Model{dataArr=[mike;Леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;Петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;Иванов;Иван;Иванович;03.03.2023;other:phone;file1.txt, mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}]
+11:35:54.202 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - OUTPUT:
+11:35:54.204 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;Леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;Петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;Иванов;Иван;Иванович;03.03.2023;other:phone;file1.txt, mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
+11:35:54.205 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
+11:35:54.800 [main] ERROR r.v.c.l.datawriter.DataWriter - Illegal Date format in string: mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt
+11:36:20.286 [main] INFO  ru.vtb.course.lesson4_1.Start - Starting Start using Java 20.0.2 with PID 20312 (C:\Users\mikev\IdeaProjects\Step2\lesson4_1\target\classes started by mikev in C:\Users\mikev\IdeaProjects\Step2\lesson4_1)
+11:36:20.290 [main] INFO  ru.vtb.course.lesson4_1.Start - No active profile set, falling back to 1 default profile: "default"
+11:36:24.908 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+11:36:28.228 [main] INFO  ru.vtb.course.lesson4_1.Start - Started Start in 8.776 seconds (process running for 10.173)
+11:36:28.262 [main] WARN  r.v.c.l.d.DateTransformer - Empty Date, string removed: sidorov;сидоров;иван;сидорович;;other:phone;file1.txt
+11:36:28.263 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation begin =====================
+11:36:28.264 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Wed Dec 27 11:36:28 KRAT 2023
+11:36:28.264 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model ru.vtb.course.lesson4_1.datatransformer.DateTransformer.transform(Model)
+11:36:28.264 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - INPUT:
+11:36:28.264 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - [Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}]
+11:36:28.264 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - OUTPUT:
+11:36:28.264 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
+11:36:28.265 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
+11:36:28.266 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation begin =====================
+11:36:28.267 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Wed Dec 27 11:36:28 KRAT 2023
+11:36:28.268 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model ru.vtb.course.lesson4_1.datatransformer.FioTransformer.transform(Model)
+11:36:28.269 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - INPUT:
+11:36:28.269 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - [Model{dataArr=[mike;Леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;Петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;Иванов;Иван;Иванович;03.03.2023;other:phone;file1.txt, mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}]
+11:36:28.270 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - OUTPUT:
+11:36:28.278 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;Леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;Петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;Иванов;Иван;Иванович;03.03.2023;other:phone;file1.txt, mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
+11:36:28.280 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
+11:36:28.879 [main] ERROR r.v.c.l.datawriter.DataWriter - Illegal Date format in string: mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt
+11:41:06.654 [main] INFO  ru.vtb.course.lesson4_1.Start - Starting Start using Java 20.0.2 with PID 21992 (C:\Users\mikev\IdeaProjects\Step2\lesson4_1\target\classes started by mikev in C:\Users\mikev\IdeaProjects\Step2\lesson4_1)
+11:41:06.659 [main] INFO  ru.vtb.course.lesson4_1.Start - No active profile set, falling back to 1 default profile: "default"
+11:41:11.262 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+11:41:14.314 [main] INFO  ru.vtb.course.lesson4_1.Start - Started Start in 8.511 seconds (process running for 9.845)
+11:41:14.343 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation begin =====================
+11:41:14.344 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Wed Dec 27 11:41:14 KRAT 2023
+11:41:14.345 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model ru.vtb.course.lesson4_1.datatransformer.DateTransformer.transform(Model)
+11:41:14.345 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - INPUT:
+11:41:14.346 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - [Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, sidorov;сидоров;иван;сидорович;;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}]
+11:41:14.347 [main] WARN  r.v.c.l.d.DateTransformer - Empty Date, string removed: sidorov;сидоров;иван;сидорович;;other:phone;file1.txt
+11:41:14.347 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - OUTPUT:
+11:41:14.347 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
+11:41:14.348 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
+11:41:14.348 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation begin =====================
+11:41:14.348 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Wed Dec 27 11:41:14 KRAT 2023
+11:41:14.349 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model ru.vtb.course.lesson4_1.datatransformer.FioTransformer.transform(Model)
+11:41:14.349 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - INPUT:
+11:41:14.349 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - [Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}]
+11:41:14.350 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - OUTPUT:
+11:41:14.351 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;Леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;Петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;Иванов;Иван;Иванович;03.03.2023;other:phone;file1.txt, mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
+11:41:14.351 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
+11:41:14.828 [main] ERROR r.v.c.l.datawriter.DataWriter - Illegal Date format in string: mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt
+11:42:04.252 [main] INFO  ru.vtb.course.lesson4_1.Start - Starting Start using Java 20.0.2 with PID 23432 (C:\Users\mikev\IdeaProjects\Step2\lesson4_1\target\classes started by mikev in C:\Users\mikev\IdeaProjects\Step2\lesson4_1)
+11:42:04.257 [main] INFO  ru.vtb.course.lesson4_1.Start - No active profile set, falling back to 1 default profile: "default"
+11:42:08.835 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+11:42:12.385 [main] INFO  ru.vtb.course.lesson4_1.Start - Started Start in 8.97 seconds (process running for 10.286)
+11:42:12.417 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation begin =====================
+11:42:12.418 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Wed Dec 27 11:42:12 KRAT 2023
+11:42:12.418 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model ru.vtb.course.lesson4_1.datatransformer.DateTransformer.transform(Model)
+11:42:12.418 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - INPUT:
+11:42:12.418 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - [Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, sidorov;сидоров;иван;сидорович;;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}]
+11:42:12.419 [main] WARN  r.v.c.l.d.DateTransformer - Empty Date, string removed: sidorov;сидоров;иван;сидорович;;other:phone;file1.txt
+11:42:12.420 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - OUTPUT:
+11:42:12.420 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
+11:42:12.421 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
+11:42:12.422 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation begin =====================
+11:42:12.422 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Wed Dec 27 11:42:12 KRAT 2023
+11:42:12.423 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model ru.vtb.course.lesson4_1.datatransformer.FioTransformer.transform(Model)
+11:42:12.423 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - INPUT:
+11:42:12.423 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - [Model{dataArr=[mike;леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;иванов;иван;иванович;03.03.2023;other:phone;file1.txt, mike;леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}]
+11:42:12.425 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - OUTPUT:
+11:42:12.425 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - Model{dataArr=[mike;Леонтьев;Михаил;Владимирович;01.01.2023;mobile;file1.txt, peter;Петров;Петр;Петрович;02.02.2023;web;file1.txt, ivanov;Иванов;Иван;Иванович;03.03.2023;other:phone;file1.txt, mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt]}
+11:42:12.426 [main] INFO  r.vtb.course.lesson4_1.LoggingAspect - =============== LogTransformation end  =====================
+11:42:12.946 [main] ERROR r.v.c.l.datawriter.DataWriter - Illegal Date format in string: mike;Леонтьев;Михаил;Владимирович;01.022023;other:xxx;file1.txt

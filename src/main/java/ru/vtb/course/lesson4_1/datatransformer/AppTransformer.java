@@ -14,7 +14,7 @@ import java.util.ListIterator;
 @Priority(1)
 public class AppTransformer implements DataTransformerable<Model> {
     @Override
-    @LogTransformation
+    @LogTransformation(value = "log_transform.txt")
     public Model transform(Model model) {
         List<String> tmpStrArr = model.getDataArr();
         String tmp = "";
