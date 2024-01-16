@@ -11,13 +11,13 @@ public class Account {
     private Long id;
 
     @Column(name = "product_id")
-    private Long product_id;
+    private Long productId;
     @Column(name = "type")
     private String type;
     @Column(name = "account_id")
-    private Long account_id;
+    private Long accountId;
     @Column(name = "currency_code")
-    private String currency_code;
+    private String currencyCode;
     @Column(name = "state")
     private String state;
 
@@ -29,12 +29,12 @@ public class Account {
         this.id = id;
     }
 
-    public Long getProduct_id() {
-        return product_id;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(Long product_id) {
-        this.product_id = product_id;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public String getType() {
@@ -45,20 +45,20 @@ public class Account {
         this.type = type;
     }
 
-    public Long getAccount_id() {
-        return account_id;
+    public Long getAccountId() {
+        return accountId;
     }
 
-    public void setAccount_id(Long account_id) {
-        this.account_id = account_id;
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 
-    public String getCurrency_code() {
-        return currency_code;
+    public String getCurrencyCode() {
+        return currencyCode;
     }
 
-    public void setCurrency_code(String currency_code) {
-        this.currency_code = currency_code;
+    public void setCurrencyCode(String currencyCode) {
+        this.currencyCode = currencyCode;
     }
 
     public String getState() {
@@ -73,10 +73,10 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", product_id=" + product_id +
+                ", product_id=" + productId +
                 ", type='" + type + '\'' +
-                ", account_id=" + account_id +
-                ", currency_code='" + currency_code + '\'' +
+                ", account_id=" + accountId +
+                ", currency_code='" + currencyCode + '\'' +
                 ", state='" + state + '\'' +
                 '}';
     }

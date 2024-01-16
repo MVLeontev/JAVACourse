@@ -1,15 +1,14 @@
-package ru.vtb.course.lesson5.controllers;
+package ru.vtb.course.lesson5.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 
 public class AccountRequest {
 
-    @NotNull(message = "instanceId must be specified")
-    @NotEmpty(message = "instanceId must be specified")
-    @NotBlank
-    private long instanceId;
+    @NotNull(message = "Имя обязательного параметра <instanceId> не заполнено")
+    @NotBlank(message = "Имя обязательного параметра <instanceId> не заполнено")
+    @Min(value = 1, message = "Обязательный параметр <instanceId> должен быть больше 0")
+    @Pattern(regexp = "^\\d+$", message = "Обязательный параметр <instanceId> должен содержать только цифры")
+    private String instanceId;
     private String registryTypeCode;
     private String accountType;
     private String currencyCode;
@@ -24,11 +23,11 @@ public class AccountRequest {
     public AccountRequest() {
     }
 
-    public long getInstanceId() {
+    public String getInstanceId() {
         return instanceId;
     }
 
-    public void setInstanceId(long instanceId) {
+    public void setInstanceId(String  instanceId) {
         this.instanceId = instanceId;
     }
 
