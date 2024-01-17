@@ -1,6 +1,7 @@
 package ru.vtb.course.lesson5.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -49,7 +50,7 @@ public class ProductRequest {
     private String urgencyCode;
     private Long referenceCode;
     private ProductAdditionalPropertiesData additionalPropertiesVip;
-    private ArrayList<ProductInstanceArrangement> instanceArrangement;
+    private @Valid ArrayList<ProductInstanceArrangement> instanceArrangement;
 
     public ProductRequest() {
     }

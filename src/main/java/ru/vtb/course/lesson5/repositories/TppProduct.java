@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "tpp_product")
-public class Product {
+public class TppProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -52,7 +52,7 @@ public class Product {
     @Column(name = "state")
     private String state;
 
-    public Product() {
+    public TppProduct() {
     }
 
     public Long getId() {

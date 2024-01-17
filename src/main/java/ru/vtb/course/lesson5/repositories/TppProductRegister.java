@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tpp_product_register")
-public class Account {
+public class TppProductRegister {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -20,6 +20,8 @@ public class Account {
     private String currencyCode;
     @Column(name = "state")
     private String state;
+    @Column(name="account_number")
+    private String accountNumber;
 
     public Long getId() {
         return id;
@@ -69,15 +71,24 @@ public class Account {
         this.state = state;
     }
 
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", product_id=" + productId +
+                ", productId=" + productId +
                 ", type='" + type + '\'' +
-                ", account_id=" + accountId +
-                ", currency_code='" + currencyCode + '\'' +
+                ", accountId=" + accountId +
+                ", currencyCode='" + currencyCode + '\'' +
                 ", state='" + state + '\'' +
+                ", accountNumber='" + accountNumber + '\'' +
                 '}';
     }
 }

@@ -7,8 +7,9 @@ DROP TABLE IF EXISTS account_pool cascade;
 
 CREATE TABLE tpp_ref_account_type (
                                     internal_id serial  primary key ,
-                                    value varchar(255)
+                                    value varchar(255) UNIQUE not null
                                  );
+CREATE INDEX idx_tpp_ref_account_type_value ON tpp_ref_account_type (value);
 
 
 CREATE TABLE tpp_ref_product_class (
@@ -63,6 +64,7 @@ CREATE TABLE tpp_products   (
                               state varchar(255)
                             );
 CREATE TABLE account_pool (
+                            id serial  primary key ,
                             branch_code varchar(25),
                             currency_code varchar(3),
                             mdm_code varchar(25),
