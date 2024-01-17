@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TppRefProductRegisterTypeRepo extends JpaRepository<TppRefProductRegisterType, Long> {
+    public TppRefProductRegisterType[] findByValue(String value);
 }

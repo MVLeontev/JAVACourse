@@ -13,8 +13,58 @@ public class TppRefProductRegisterType {
     private String value;
     @Column(name = "register_type_name")
     private String registerTypeName;
-    @Column(name = "product_class_code")
-    private Long productClassCode;
-    @Column(name = "account_type")
-    private Long accountType;
+
+
+    @ManyToOne()
+    @JoinColumn(name = "product_class_code")
+    private TppRefProductClass productClassCode;
+
+
+    @ManyToOne()
+    @JoinColumn(name = "account_type")
+    private TppRefAccountType accountType;
+
+
+    public TppRefProductRegisterType() {
+    }
+
+    public Long getInternalId() {
+        return internalId;
+    }
+
+    public void setInternalId(Long internalId) {
+        this.internalId = internalId;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getRegisterTypeName() {
+        return registerTypeName;
+    }
+
+    public void setRegisterTypeName(String registerTypeName) {
+        this.registerTypeName = registerTypeName;
+    }
+
+    public TppRefProductClass getProductClassCode() {
+        return productClassCode;
+    }
+
+    public void setProductClassCode(TppRefProductClass productClassCode) {
+        this.productClassCode = productClassCode;
+    }
+
+    public TppRefAccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(TppRefAccountType accountType) {
+        this.accountType = accountType;
+    }
 }

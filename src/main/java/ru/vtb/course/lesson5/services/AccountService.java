@@ -12,10 +12,12 @@ import ru.vtb.course.lesson5.repositories.TppProductRegisterRepo;
 public class AccountService {
 
     private TppProductRegisterRepo accountRepo;
-    @Autowired
+
+
     public AccountService(TppProductRegisterRepo accountRepo) {
         this.accountRepo = accountRepo;
     }
+
 
     public AccountResponse makeAccount(AccountRequest accountRequest) {
         TppProductRegister[] accArr = accountRepo.findByProductIdAndType(Long.valueOf(accountRequest.getInstanceId()), accountRequest.getAccountType());
@@ -27,7 +29,7 @@ public class AccountService {
 
         TppProductRegister ac = new TppProductRegister();
         ac.setProductId( Long.valueOf(accountRequest.getInstanceId()) );
-        ac.setType(accountRequest.getAccountType());
+        //ac.setType(commonService.findRegType( accountRequest.getRegistryTypeCode()) );
         ac.setAccountId(1110L);
         ac.setCurrencyCode(accountRequest.getCurrencyCode());
         ac.setState("Created");

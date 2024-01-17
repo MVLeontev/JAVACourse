@@ -12,9 +12,9 @@ import ru.vtb.course.lesson5.services.AccountService;
 public class CorporateSettlementAccountController {
 
     private AccountService accountService;
-    @Autowired
-    public CorporateSettlementAccountController(AccountService ac) {
-        this.accountService = ac;
+
+    public CorporateSettlementAccountController(AccountService accountService) {
+        this.accountService = accountService;
     }
 
     @PostMapping(value = "/create")

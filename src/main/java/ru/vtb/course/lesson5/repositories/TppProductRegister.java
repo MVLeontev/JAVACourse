@@ -12,8 +12,10 @@ public class TppProductRegister {
 
     @Column(name = "product_id")
     private Long productId;
+
     @Column(name = "type")
     private String type;
+
     @Column(name = "account_id")
     private Long accountId;
     @Column(name = "currency_code")
@@ -22,6 +24,9 @@ public class TppProductRegister {
     private String state;
     @Column(name="account_number")
     private String accountNumber;
+
+    public TppProductRegister() {
+    }
 
     public Long getId() {
         return id;

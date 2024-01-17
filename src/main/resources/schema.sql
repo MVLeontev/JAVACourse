@@ -9,8 +9,6 @@ CREATE TABLE tpp_ref_account_type (
                                     internal_id serial  primary key ,
                                     value varchar(255) UNIQUE not null
                                  );
-CREATE INDEX idx_tpp_ref_account_type_value ON tpp_ref_account_type (value);
-
 
 CREATE TABLE tpp_ref_product_class (
                                     internal_id serial primary key,
@@ -26,21 +24,13 @@ CREATE TABLE tpp_ref_product_class (
 
 CREATE TABLE  tpp_ref_product_register_type (
                                     internal_id serial  primary key ,
-                                    value varchar(255) ,
+                                    value varchar(255) UNIQUE ,
                                     register_type_name varchar(255) ,
                                     product_class_code bigint references tpp_ref_product_class(internal_id) ,
                                     account_type bigint references tpp_ref_account_type(internal_id)
                                  );
 
-CREATE TABLE  tpp_product_register (
-                                    id serial  primary key ,
-                                    product_id bigint ,
-                                    type bigint references tpp_ref_product_register_type(internal_id),
-                                    account_id bigint ,
-                                    currency_code varchar(255) ,
-                                    state varchar(255),
-                                    account_number varchar(25)
-                                 );
+
 
 CREATE TABLE tpp_products   (
                               id serial  primary key ,
@@ -63,6 +53,17 @@ CREATE TABLE tpp_products   (
                               reason_close varchar(255),
                               state varchar(255)
                             );
+
+CREATE TABLE  tpp_product_register (
+                                    id serial  primary key ,
+                                    product_id bigint references tpp_products(id) ,
+                                    type varchar(255) references tpp_ref_product_register_type(value),
+                                    account_id bigint ,
+                                    currency_code varchar(255) ,
+                                    state varchar(255),
+                                    account_number varchar(25)
+                                 );
+
 CREATE TABLE account_pool (
                             id serial  primary key ,
                             branch_code varchar(25),
