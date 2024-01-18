@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TppProductRegisterRepo extends JpaRepository<TppProductRegister, Long> {
-    public TppProductRegister[] findByProductIdAndType(Long prodId, String type);
+    public TppProductRegister[] findByProductIdAndType(TppProduct prodId, String type);
 }

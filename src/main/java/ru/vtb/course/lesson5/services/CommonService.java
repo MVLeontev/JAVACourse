@@ -35,5 +35,31 @@ public class CommonService {
         }
         return regTypeArr[0];
     }
+    public String findAccountNumber(String branchCode,
+                                    String currencyCode,
+                                    String mdmCode,
+                                    String priorityCode,
+                                    String registryTypeCode) {
+        AccountPool[] accArr = accountPoolRepo.findByBranchCodeAndCurrencyCodeAndMdmCodeAndPriorityCodeAndRegistryTypeCode(
+                branchCode, currencyCode, mdmCode, priorityCode, registryTypeCode);
+        if (accArr.length == 0) {
+            throw new NotFoundException("Не найден счет в пуле счетов со следующими данными: <branchCode> "+branchCode+
+                    ", <currencyCode> "+currencyCode+", <mdmCode> "+mdmCode+", <priorityCode> "+priorityCode+", <registryTypeCode> "+registryTypeCode);
+        }
+        return accArr[0].getAccounts().split(",")[0];
+    }
+
+    public Long generateAccountId(String accountNum) {
+        return Math.abs( (long)accountNum.hashCode());
+    }
+
+    public Long generateClientIdByMdm(String mdmCode) {
+        return Long.valueOf(mdmCode);
+    }
+
+    public TppProduct findProduct(Long id) {
+        TppProduct prod = productRepo.findById(id).orElseThrow(() -> new NotFoundException("Не найден экземпляр продукта <InstanseId> = "+id));
+        return prod;
+    }
 
 }

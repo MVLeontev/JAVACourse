@@ -42,6 +42,13 @@ public class ExceptionControllerAdvice {
         return new ResponceExceptionClass(message);
     }
 
+    @ExceptionHandler(NotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ResponceExceptionClass handleNotFoundException(NotFoundException e) {
+        String message = String.format("%s %s", LocalDateTime.now(), e.getMessage());
+        return new ResponceExceptionClass(message);
+    }
     //обработка всех возможных ошибок
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

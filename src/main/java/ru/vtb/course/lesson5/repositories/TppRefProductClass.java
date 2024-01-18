@@ -9,10 +9,10 @@ public class TppRefProductClass {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "internal_id")
     private Long internalId;
-    @Column(name = "value")
+    @Column(name = "valuess")
     private String value;
-    @Column(name = "dbl_code")
-    private String dblCode;
+    @Column(name = "gbl_code")
+    private String gblCode;
     @Column(name = "gbl_name")
     private String gblName;
     @Column(name = "product_row_code")
@@ -43,12 +43,12 @@ public class TppRefProductClass {
         this.value = value;
     }
 
-    public String getDblCode() {
-        return dblCode;
+    public String getGblCode() {
+        return gblCode;
     }
 
-    public void setDblCode(String dblCode) {
-        this.dblCode = dblCode;
+    public void setGblCode(String gblCode) {
+        this.gblCode = gblCode;
     }
 
     public String getGblName() {

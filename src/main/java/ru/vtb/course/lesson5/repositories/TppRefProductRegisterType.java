@@ -9,7 +9,7 @@ public class TppRefProductRegisterType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "internal_id")
     private Long internalId;
-    @Column(name = "value")
+    @Column(name = "valuess")
     private String value;
     @Column(name = "register_type_name")
     private String registerTypeName;

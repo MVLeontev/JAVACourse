@@ -10,8 +10,9 @@ public class TppProductRegister {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "product_id")
-    private Long productId;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private TppProduct productId;
 
     @Column(name = "type")
     private String type;
@@ -36,11 +37,11 @@ public class TppProductRegister {
         this.id = id;
     }
 
-    public Long getProductId() {
+    public TppProduct getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(TppProduct productId) {
         this.productId = productId;
     }
 

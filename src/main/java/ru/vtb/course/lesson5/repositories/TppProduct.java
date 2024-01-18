@@ -14,8 +14,9 @@ public class TppProduct {
     private Long id;
     @Column(name = "agreement_id")
     private Long agreementId;
-    @Column(name = "product_code_id")
-    private Long productCodeId;  // здесь нужна ссылка на tpp_ref_product_class
+    @ManyToOne
+    @JoinColumn(name = "product_code_id")
+    private TppRefProductClass productCodeId;  // здесь нужна ссылка на tpp_ref_product_class
     @Column(name = "client_id")
     private Long clientId;
     @Column(name = "type")
@@ -71,11 +72,11 @@ public class TppProduct {
         this.agreementId = agreementId;
     }
 
-    public Long getProductCodeId() {
+    public TppRefProductClass getProductCodeId() {
         return productCodeId;
     }
 
-    public void setProductCodeId(Long productCodeId) {
+    public void setProductCodeId(TppRefProductClass productCodeId) {
         this.productCodeId = productCodeId;
     }
 
