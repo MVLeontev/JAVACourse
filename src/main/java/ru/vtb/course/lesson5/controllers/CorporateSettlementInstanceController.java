@@ -9,7 +9,7 @@ import ru.vtb.course.lesson5.services.ProductServiceable;
 @RestController
 @RequestMapping("corporate-settlement-instance")
 public class CorporateSettlementInstanceController {
-    private ProductServiceable productService;
+    private final ProductServiceable productService;
 
     public CorporateSettlementInstanceController(ProductServiceable productService) {
         this.productService = productService;

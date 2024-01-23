@@ -8,7 +8,7 @@ import ru.vtb.course.lesson5.repositories.TppProductRepo;
 @Service
 public class FindProductService implements FindProductServiceable {
 
-    private TppProductRepo productRepo;
+    private final TppProductRepo productRepo;
 
     public FindProductService(TppProductRepo productRepo) {
         this.productRepo = productRepo;

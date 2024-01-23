@@ -7,7 +7,7 @@ import ru.vtb.course.lesson5.repositories.AccountPoolRepo;
 
 @Service
 public class FindAccountNumberService implements FindAccountNumberServiceable {
-    private AccountPoolRepo accountPoolRepo;
+    private final AccountPoolRepo accountPoolRepo;
 
     public FindAccountNumberService(AccountPoolRepo accountPoolRepo) {
         this.accountPoolRepo = accountPoolRepo;

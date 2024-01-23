@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 @Service
 public class CheckAccountByProductRegisterTypeCodeService implements CheckAccountByProductRegisterTypeCodeServiceable {
-    private TppProductRepo productRepo;
+    private final TppProductRepo productRepo;
 
     public CheckAccountByProductRegisterTypeCodeService(TppProductRepo productRepo) {
         this.productRepo = productRepo;

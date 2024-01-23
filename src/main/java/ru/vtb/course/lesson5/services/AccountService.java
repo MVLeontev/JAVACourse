@@ -10,26 +10,27 @@ import ru.vtb.course.lesson5.services.common.CheckAccountByProductAndTypeService
 import ru.vtb.course.lesson5.services.common.CheckAccountByProductRegisterTypeCodeServiceable;
 
 @Service
-public class AccountService {
+public class AccountService implements AccountServiceable{
 
-    private TppProductRegisterRepo accountRepo;
-    private PrepareAccountService prepareAccountService;
-    private CheckAccountByProductAndTypeServiceable checkAccountByProductAndTypeServisable;
-    private CheckAccountByProductRegisterTypeCodeServiceable checkAccountByProductRegisterTypeCodeServisable;
+    private final TppProductRegisterRepo accountRepo;
+    private final PrepareAccountServiceable prepareAccountServiceable;
+    private final CheckAccountByProductAndTypeServiceable checkAccountByProductAndTypeServiceable;
+    private final CheckAccountByProductRegisterTypeCodeServiceable checkAccountByProductRegisterTypeCodeServiceable;
 
 
-    public AccountService(TppProductRegisterRepo accountRepo, PrepareAccountService prepareAccountService, CheckAccountByProductAndTypeServiceable checkAccountByProductAndTypeServisable, CheckAccountByProductRegisterTypeCodeServiceable checkAccountByProductRegisterTypeCodeServisable) {
+    public AccountService(TppProductRegisterRepo accountRepo, PrepareAccountServiceable prepareAccountServiceable, CheckAccountByProductAndTypeServiceable checkAccountByProductAndTypeServiceable, CheckAccountByProductRegisterTypeCodeServiceable checkAccountByProductRegisterTypeCodeServiceable) {
         this.accountRepo = accountRepo;
-        this.prepareAccountService = prepareAccountService;
-        this.checkAccountByProductAndTypeServisable = checkAccountByProductAndTypeServisable;
-        this.checkAccountByProductRegisterTypeCodeServisable = checkAccountByProductRegisterTypeCodeServisable;
+        this.prepareAccountServiceable = prepareAccountServiceable;
+        this.checkAccountByProductAndTypeServiceable = checkAccountByProductAndTypeServiceable;
+        this.checkAccountByProductRegisterTypeCodeServiceable = checkAccountByProductRegisterTypeCodeServiceable;
     }
 
+    @Override
     @Transactional
     public AccountResponse makeAccount(AccountRequest accountRequest) {
-        checkAccountByProductAndTypeServisable.checkAccountByProductAndType(accountRequest);
-        checkAccountByProductRegisterTypeCodeServisable.checkAccountByProductRegisterTypeCode(accountRequest);
-        TppProductRegister tppProductRegister = prepareAccountService.prepareAccount(accountRequest);
+        checkAccountByProductAndTypeServiceable.checkAccountByProductAndType(accountRequest);
+        checkAccountByProductRegisterTypeCodeServiceable.checkAccountByProductRegisterTypeCode(accountRequest);
+        TppProductRegister tppProductRegister = prepareAccountServiceable.prepareAccount(accountRequest);
 
         return new AccountResponse( String.valueOf(accountRepo.save(tppProductRegister).getId()) );
     }

@@ -8,29 +8,30 @@ import ru.vtb.course.lesson5.services.common.FindProductServiceable;
 import ru.vtb.course.lesson5.services.common.GenerateAccountIdServiceable;
 
 @Service
-public class PrepareAccountService {
+public class PrepareAccountService implements PrepareAccountServiceable{
 
-    private FindAccountNumberServiceable findAccountNumberServisable;
-    private FindProductServiceable findProductServisable;
-    private GenerateAccountIdServiceable generateAccountIdServisable;
+    private final FindAccountNumberServiceable findAccountNumberServiceable;
+    private final FindProductServiceable findProductServiceable;
+    private final GenerateAccountIdServiceable generateAccountIdServiceable;
 
-    public PrepareAccountService(FindAccountNumberServiceable findAccountNumberServisable, FindProductServiceable findProductServisable, GenerateAccountIdServiceable generateAccountIdServisable) {
-        this.findAccountNumberServisable = findAccountNumberServisable;
-        this.findProductServisable = findProductServisable;
-        this.generateAccountIdServisable = generateAccountIdServisable;
+    public PrepareAccountService(FindAccountNumberServiceable findAccountNumberServiceable, FindProductServiceable findProductServiceable, GenerateAccountIdServiceable generateAccountIdServiceable) {
+        this.findAccountNumberServiceable = findAccountNumberServiceable;
+        this.findProductServiceable = findProductServiceable;
+        this.generateAccountIdServiceable = generateAccountIdServiceable;
     }
 
+    @Override
     public TppProductRegister prepareAccount(AccountRequest accountRequest) {
-        String accNum = findAccountNumberServisable.findAccountNumber(accountRequest.getBranchCode(),
+        String accNum = findAccountNumberServiceable.findAccountNumber(accountRequest.getBranchCode(),
                 accountRequest.getCurrencyCode(),
                 accountRequest.getMdmCode(),
                 accountRequest.getPriorityCode(),
                 accountRequest.getRegistryTypeCode());
 
         TppProductRegister tppProductRegister = new TppProductRegister();
-        tppProductRegister.setProductId(findProductServisable.findProduct(accountRequest.getInstanceId()));
+        tppProductRegister.setProductId(findProductServiceable.findProduct(accountRequest.getInstanceId()));
         tppProductRegister.setType( accountRequest.getRegistryTypeCode()) ;
-        tppProductRegister.setAccountId(generateAccountIdServisable.generateAccountId(accNum));
+        tppProductRegister.setAccountId(generateAccountIdServiceable.generateAccountId(accNum));
         tppProductRegister.setCurrencyCode(accountRequest.getCurrencyCode());
         tppProductRegister.setState("Created");
         tppProductRegister.setAccountNumber(accNum);

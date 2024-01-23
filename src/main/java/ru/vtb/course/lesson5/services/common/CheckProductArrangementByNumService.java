@@ -9,7 +9,7 @@ import ru.vtb.course.lesson5.repositories.TppProductRepo;
 
 @Service
 public class CheckProductArrangementByNumService implements CheckProductArrangementByNumServiceable {
-    private TppProductRepo productRepo;
+    private final TppProductRepo productRepo;
 
     public CheckProductArrangementByNumService(TppProductRepo productRepo) {
         this.productRepo = productRepo;

@@ -11,17 +11,18 @@ import ru.vtb.course.lesson5.services.common.GenerateClientIdByMdmServiceable;
 
 
 @Service
-public class PrepareProductService {
+public class PrepareProductService implements PrepareProductServiceable{
 
-    private TppRefProductClassRepo refProductClassRepo;
-    private GenerateClientIdByMdmServiceable generateClientIdByMdmServisable;
+    private final TppRefProductClassRepo refProductClassRepo;
+    private final GenerateClientIdByMdmServiceable generateClientIdByMdmServisable;
+
 
 
     public PrepareProductService(TppRefProductClassRepo refProductClassRepo, GenerateClientIdByMdmServiceable generateClientIdByMdmServisable) {
         this.refProductClassRepo = refProductClassRepo;
         this.generateClientIdByMdmServisable = generateClientIdByMdmServisable;
     }
-
+    @Override
     public TppProduct prepareProduct(ProductRequest pr) {
         TppProduct mainProd = new TppProduct();
         //product_code_id
@@ -40,7 +41,7 @@ public class PrepareProductService {
 
         return mainProd;
     }
-
+@Override
     public TppProduct prepareProductArrangement(ProductInstanceArrangement pr, Long agreementId){
         TppProduct arrProd = new TppProduct();
         arrProd.setAgreementId(agreementId);

@@ -12,8 +12,8 @@ import java.util.Arrays;
 
 @Service
 public class FindRegisterTypeRecService implements FindRegisterTypeRecServiceable {
-    private TppRefProductClassRepo refProductClassRepo;
-    private TppRefProductRegisterTypeRepo refProductRegisterTypeRepo;
+    private final TppRefProductClassRepo refProductClassRepo;
+    private final TppRefProductRegisterTypeRepo refProductRegisterTypeRepo;
 
     public FindRegisterTypeRecService(TppRefProductClassRepo refProductClassRepo, TppRefProductRegisterTypeRepo refProductRegisterTypeRepo) {
         this.refProductClassRepo = refProductClassRepo;

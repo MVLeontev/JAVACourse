@@ -8,8 +8,8 @@ import ru.vtb.course.lesson5.repositories.TppProductRegisterRepo;
 
 @Service
 public class CheckAccountByProductAndTypeService implements CheckAccountByProductAndTypeServiceable {
-    private TppProductRegisterRepo accountRepo;
-    private FindProductServiceable findProductServisable;
+    private final TppProductRegisterRepo accountRepo;
+    private final FindProductServiceable findProductServisable;
 
     public CheckAccountByProductAndTypeService(TppProductRegisterRepo accountRepo, FindProductServiceable findProductServisable) {
         this.accountRepo = accountRepo;

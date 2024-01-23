@@ -20,5 +20,6 @@ public interface TppProductRepo extends JpaRepository<TppProduct, Long> {
 
     public TppProduct[] findByNumberAndAgreementIdIsNotNull(String number);
     public TppProduct[] findByNumberAndAgreementIdIsNull(String number);
+    public TppProduct[] findByAgreementId(Long agrId);
 
 }
