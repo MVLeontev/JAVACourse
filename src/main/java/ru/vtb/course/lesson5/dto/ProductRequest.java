@@ -6,11 +6,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class ProductRequest {
-    private String instanceId;
+    private Long instanceId;
     @NotNull(message = "Имя обязательного параметра <productType> не заполнено")
     private EnumProductType productType;
     @NotNull(message = "Имя обязательного параметра <productCode> не заполнено")
@@ -27,7 +28,7 @@ public class ProductRequest {
     private String contractNumber;
     @NotNull(message = "Имя обязательного параметра <contractDate> не заполнено")
     @JsonFormat(pattern = "dd-MM-yyyy", shape = JsonFormat.Shape.STRING)
-    private Date contractDate;
+    private LocalDate contractDate;
     @NotNull(message = "Имя обязательного параметра <priority> не заполнено")
     private Integer priority;
     private BigDecimal interestRatePenalty;
@@ -55,11 +56,11 @@ public class ProductRequest {
     public ProductRequest() {
     }
 
-    public String getInstanceId() {
+    public Long getInstanceId() {
         return instanceId;
     }
 
-    public void setInstanceId(String instanceId) {
+    public void setInstanceId(Long instanceId) {
         this.instanceId = instanceId;
     }
 
@@ -103,11 +104,11 @@ public class ProductRequest {
         this.contractNumber = contractNumber;
     }
 
-    public Date getContractDate() {
+    public LocalDate getContractDate() {
         return contractDate;
     }
 
-    public void setContractDate(Date contractDate) {
+    public void setContractDate(LocalDate contractDate) {
         this.contractDate = contractDate;
     }
 
@@ -227,5 +228,33 @@ public class ProductRequest {
 
     public void setInstanceArrangement(ArrayList<ProductInstanceArrangement> instanceArrangement) {
         this.instanceArrangement = instanceArrangement;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductRequest{" +
+                "instanceId='" + instanceId + '\'' +
+                ", productType=" + productType +
+                ", productCode='" + productCode + '\'' +
+                ", registerType='" + registerType + '\'' +
+                ", mdmCode='" + mdmCode + '\'' +
+                ", contractNumber='" + contractNumber + '\'' +
+                ", contractDate=" + contractDate +
+                ", priority=" + priority +
+                ", interestRatePenalty=" + interestRatePenalty +
+                ", minimalBalance=" + minimalBalance +
+                ", thresholdAmount=" + thresholdAmount +
+                ", accountingDetails='" + accountingDetails + '\'' +
+                ", rateType='" + rateType + '\'' +
+                ", taxPercentageRate=" + taxPercentageRate +
+                ", technicalOverdraftLimitAmount=" + technicalOverdraftLimitAmount +
+                ", contractId=" + contractId +
+                ", branchCode='" + branchCode + '\'' +
+                ", isoCurrencyCode='" + isoCurrencyCode + '\'' +
+                ", urgencyCode='" + urgencyCode + '\'' +
+                ", referenceCode=" + referenceCode +
+                ", additionalPropertiesVip=" + additionalPropertiesVip +
+                ", instanceArrangement=" + instanceArrangement +
+                '}';
     }
 }

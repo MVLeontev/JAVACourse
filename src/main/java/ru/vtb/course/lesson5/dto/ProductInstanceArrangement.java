@@ -5,37 +5,38 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ProductInstanceArrangement {
     private String generalAgreementId;
     private String supplementaryAgreementId;
-    private String arrangementType;
+    private EnumArrangementType arrangementType;
     private Integer shedulerJobId;
     @NotNull(message = "Имя обязательного параметра <instanceArrangement/number> не заполнено")
     @NotBlank(message = "Имя обязательного параметра <instanceArrangement/number> не заполнено")
     private String number;
     @NotNull(message = "Имя обязательного параметра <instanceArrangement/openingDate> не заполнено")
     @JsonFormat(pattern = "dd-MM-yyyy", shape = JsonFormat.Shape.STRING)
-    private Date openingDate;
+    private LocalDate openingDate;
     @JsonFormat(pattern = "dd-MM-yyyy", shape = JsonFormat.Shape.STRING)
-    private Date closingDate;
+    private LocalDate closingDate;
     @JsonFormat(pattern = "dd-MM-yyyy", shape = JsonFormat.Shape.STRING)
-    private Date cancelDate;
+    private LocalDate cancelDate;
     private Integer validityDuration;
     private String cancellationReason;
     private String status;
     @JsonFormat(pattern = "dd-MM-yyyy", shape = JsonFormat.Shape.STRING)
-    private Date interestCalculationDate;
+    private LocalDate interestCalculationDate;
     private BigDecimal interestRate;
     private BigDecimal coefficient;
-    private String coefficientAction;
+    private EnumCoefficientAction coefficientAction;
     private BigDecimal minimumInterestRate;
     private BigDecimal minimumInterestRateCoefficient;
-    private String minimumInterestRateCoefficientAction;
+    private EnumCoefficientAction minimumInterestRateCoefficientAction;
     private BigDecimal maximalnterestRate;
     private BigDecimal maximalnterestRateCoefficient;
-    private String maximalnterestRateCoefficientAction;
+    private EnumCoefficientAction maximalnterestRateCoefficientAction;
 
     public ProductInstanceArrangement() {
     }
@@ -56,11 +57,11 @@ public class ProductInstanceArrangement {
         this.supplementaryAgreementId = supplementaryAgreementId;
     }
 
-    public String getArrangementType() {
+    public EnumArrangementType getArrangementType() {
         return arrangementType;
     }
 
-    public void setArrangementType(String arrangementType) {
+    public void setArrangementType(EnumArrangementType arrangementType) {
         this.arrangementType = arrangementType;
     }
 
@@ -80,27 +81,27 @@ public class ProductInstanceArrangement {
         this.number = number;
     }
 
-    public Date getOpeningDate() {
+    public LocalDate getOpeningDate() {
         return openingDate;
     }
 
-    public void setOpeningDate(Date openingDate) {
+    public void setOpeningDate(LocalDate openingDate) {
         this.openingDate = openingDate;
     }
 
-    public Date getClosingDate() {
+    public LocalDate getClosingDate() {
         return closingDate;
     }
 
-    public void setClosingDate(Date closingDate) {
+    public void setClosingDate(LocalDate closingDate) {
         this.closingDate = closingDate;
     }
 
-    public Date getCancelDate() {
+    public LocalDate getCancelDate() {
         return cancelDate;
     }
 
-    public void setCancelDate(Date cancelDate) {
+    public void setCancelDate(LocalDate cancelDate) {
         this.cancelDate = cancelDate;
     }
 
@@ -128,11 +129,11 @@ public class ProductInstanceArrangement {
         this.status = status;
     }
 
-    public Date getInterestCalculationDate() {
+    public LocalDate getInterestCalculationDate() {
         return interestCalculationDate;
     }
 
-    public void setInterestCalculationDate(Date interestCalculationDate) {
+    public void setInterestCalculationDate(LocalDate interestCalculationDate) {
         this.interestCalculationDate = interestCalculationDate;
     }
 
@@ -152,11 +153,11 @@ public class ProductInstanceArrangement {
         this.coefficient = coefficient;
     }
 
-    public String getCoefficientAction() {
+    public EnumCoefficientAction getCoefficientAction() {
         return coefficientAction;
     }
 
-    public void setCoefficientAction(String coefficientAction) {
+    public void setCoefficientAction(EnumCoefficientAction coefficientAction) {
         this.coefficientAction = coefficientAction;
     }
 
@@ -176,11 +177,11 @@ public class ProductInstanceArrangement {
         this.minimumInterestRateCoefficient = minimumInterestRateCoefficient;
     }
 
-    public String getMinimumInterestRateCoefficientAction() {
+    public EnumCoefficientAction getMinimumInterestRateCoefficientAction() {
         return minimumInterestRateCoefficientAction;
     }
 
-    public void setMinimumInterestRateCoefficientAction(String minimumInterestRateCoefficientAction) {
+    public void setMinimumInterestRateCoefficientAction(EnumCoefficientAction minimumInterestRateCoefficientAction) {
         this.minimumInterestRateCoefficientAction = minimumInterestRateCoefficientAction;
     }
 
@@ -200,11 +201,38 @@ public class ProductInstanceArrangement {
         this.maximalnterestRateCoefficient = maximalnterestRateCoefficient;
     }
 
-    public String getMaximalnterestRateCoefficientAction() {
+    public EnumCoefficientAction getMaximalnterestRateCoefficientAction() {
         return maximalnterestRateCoefficientAction;
     }
 
-    public void setMaximalnterestRateCoefficientAction(String maximalnterestRateCoefficientAction) {
+    public void setMaximalnterestRateCoefficientAction(EnumCoefficientAction maximalnterestRateCoefficientAction) {
         this.maximalnterestRateCoefficientAction = maximalnterestRateCoefficientAction;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductInstanceArrangement{" +
+                "generalAgreementId='" + generalAgreementId + '\'' +
+                ", supplementaryAgreementId='" + supplementaryAgreementId + '\'' +
+                ", arrangementType=" + arrangementType +
+                ", shedulerJobId=" + shedulerJobId +
+                ", number='" + number + '\'' +
+                ", openingDate=" + openingDate +
+                ", closingDate=" + closingDate +
+                ", cancelDate=" + cancelDate +
+                ", validityDuration=" + validityDuration +
+                ", cancellationReason='" + cancellationReason + '\'' +
+                ", status='" + status + '\'' +
+                ", interestCalculationDate=" + interestCalculationDate +
+                ", interestRate=" + interestRate +
+                ", coefficient=" + coefficient +
+                ", coefficientAction=" + coefficientAction +
+                ", minimumInterestRate=" + minimumInterestRate +
+                ", minimumInterestRateCoefficient=" + minimumInterestRateCoefficient +
+                ", minimumInterestRateCoefficientAction=" + minimumInterestRateCoefficientAction +
+                ", maximalnterestRate=" + maximalnterestRate +
+                ", maximalnterestRateCoefficient=" + maximalnterestRateCoefficient +
+                ", maximalnterestRateCoefficientAction=" + maximalnterestRateCoefficientAction +
+                '}';
     }
 }

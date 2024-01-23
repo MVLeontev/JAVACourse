@@ -5,6 +5,9 @@ import java.util.ArrayList;
 public class ProductAdditionalPropertiesData {
     private ArrayList<ProductAdditionalProperties> data;
 
+    public ProductAdditionalPropertiesData() {
+    }
+
     public ProductAdditionalPropertiesData(ArrayList<ProductAdditionalProperties> data) {
         this.data = data;
     }

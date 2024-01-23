@@ -5,10 +5,8 @@ import jakarta.validation.constraints.*;
 public class AccountRequest {
 
     @NotNull(message = "Имя обязательного параметра <instanceId> не заполнено")
-    @NotBlank(message = "Имя обязательного параметра <instanceId> не заполнено")
     @Min(value = 1, message = "Обязательный параметр <instanceId> должен быть больше 0")
-    @Pattern(regexp = "^\\d+$", message = "Обязательный параметр <instanceId> должен содержать только цифры")
-    private String instanceId;
+    private Long instanceId;
     private String registryTypeCode;
     private String accountType;
     private String currencyCode;
@@ -23,11 +21,11 @@ public class AccountRequest {
     public AccountRequest() {
     }
 
-    public String getInstanceId() {
+    public Long getInstanceId() {
         return instanceId;
     }
 
-    public void setInstanceId(String  instanceId) {
+    public void setInstanceId(Long instanceId) {
         this.instanceId = instanceId;
     }
 

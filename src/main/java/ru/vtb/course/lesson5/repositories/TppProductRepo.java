@@ -16,5 +16,9 @@ public interface TppProductRepo extends JpaRepository<TppProduct, Long> {
       ,nativeQuery = true)
     public ArrayList<String> getProductRegisterTypeCode(Long productId);
 
+    public TppProduct[] findByNumber(String number);
+
+    public TppProduct[] findByNumberAndAgreementIdIsNotNull(String number);
+    public TppProduct[] findByNumberAndAgreementIdIsNull(String number);
 
 }

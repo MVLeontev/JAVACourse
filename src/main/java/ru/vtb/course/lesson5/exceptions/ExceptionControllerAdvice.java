@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 @RestControllerAdvice
 public class ExceptionControllerAdvice {
@@ -20,8 +21,9 @@ public class ExceptionControllerAdvice {
     @ResponseBody
     public ResponceExceptionClass validationErrorHandler(MethodArgumentNotValidException e) {
         FieldError fieldError = e.getBindingResult().getFieldError();
+        StackTraceElement[] stack = e.getStackTrace();
         assert fieldError != null;
-        return new ResponceExceptionClass(fieldError.getDefaultMessage());
+        return new ResponceExceptionClass(fieldError.getDefaultMessage(), stack);
     }
 
     //обработка ошибок парсинга JSON
@@ -29,8 +31,10 @@ public class ExceptionControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ResponceExceptionClass handleException(JacksonException e) {
-        String message = String.format("%s %s", LocalDateTime.now(), e.getMessage());
-           return new ResponceExceptionClass(message);
+
+        StackTraceElement[] stack = e.getStackTrace();
+        String message = e.getMessage();
+           return new ResponceExceptionClass(message,stack);
     }
 
     //обработка ошибок поиска
@@ -38,24 +42,27 @@ public class ExceptionControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ResponceExceptionClass handleDuplicateException(DuplicateException e) {
-        String message = String.format("%s %s", LocalDateTime.now(), e.getMessage());
-        return new ResponceExceptionClass(message);
+        String message = e.getMessage();
+        StackTraceElement[] stack = e.getStackTrace();
+        return new ResponceExceptionClass(message, stack);
     }
 
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
     public ResponceExceptionClass handleNotFoundException(NotFoundException e) {
-        String message = String.format("%s %s", LocalDateTime.now(), e.getMessage());
-        return new ResponceExceptionClass(message);
+        String message = e.getMessage();
+        StackTraceElement[] stack = e.getStackTrace();
+        return new ResponceExceptionClass(message, stack);
     }
     //обработка всех возможных ошибок
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     public ResponceExceptionClass handleAllException(Exception e) {
-        String message = String.format("%s %s", LocalDateTime.now(), e.getMessage());
-        return new ResponceExceptionClass(message);
+        String message = e.getMessage();
+        StackTraceElement[] stack = e.getStackTrace();
+        return new ResponceExceptionClass(message, stack);
     }
 
 }

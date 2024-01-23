@@ -15,14 +15,11 @@ public class TppRefProductRegisterType {
     private String registerTypeName;
 
 
-    @ManyToOne()
-    @JoinColumn(name = "product_class_code")
-    private TppRefProductClass productClassCode;
+    @Column(name = "product_class_code")
+    private String productClassCode;
 
-
-    @ManyToOne()
-    @JoinColumn(name = "account_type")
-    private TppRefAccountType accountType;
+    @Column(name = "account_type")
+    private String accountType;
 
 
     public TppRefProductRegisterType() {
@@ -52,19 +49,19 @@ public class TppRefProductRegisterType {
         this.registerTypeName = registerTypeName;
     }
 
-    public TppRefProductClass getProductClassCode() {
+    public String  getProductClassCode() {
         return productClassCode;
     }
 
-    public void setProductClassCode(TppRefProductClass productClassCode) {
+    public void setProductClassCode(String  productClassCode) {
         this.productClassCode = productClassCode;
     }
 
-    public TppRefAccountType getAccountType() {
+    public String  getAccountType() {
         return accountType;
     }
 
-    public void setAccountType(TppRefAccountType accountType) {
+    public void setAccountType(String  accountType) {
         this.accountType = accountType;
     }
 }

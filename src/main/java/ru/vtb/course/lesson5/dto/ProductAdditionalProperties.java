@@ -37,4 +37,13 @@ public class ProductAdditionalProperties {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "ProductAdditionalProperties{" +
+                "key='" + key + '\'' +
+                ", value='" + value + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

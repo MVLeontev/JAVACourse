@@ -13,16 +13,21 @@ INSERT INTO  tpp_ref_product_register_type
                         (internal_id, valuess, register_type_name, product_class_code, account_type)
                         VALUES
                         (1, '03.012.002_47533_ComSoLd', 'Хранение ДМ.', '03.012.002', 'Клиентский'),
-                        (2, '02.001.005_45343_CoDowFF', 'Серебро. Выкуп.','02.001.005', 'Клиентский');
+                        (2, '03.012.002_47533_ComSoVb', 'Хранение ДМ.', '03.012.002', 'Внутрибанковский'),
+                        (3, '02.001.005_45343_CoDowFF', 'Серебро. Выкуп.','02.001.005', 'Клиентский');
 
 
 INSERT INTO account_pool
                     (branch_code, currency_code, mdm_code, priority_code, registry_type_code, accounts )
                     VALUES
                     ('0022', '800', '15', '00', '03.012.002_47533_ComSoLd','475335516415314841861,4753321651354151,4753352543276345'),
+                    ('0022', '800', '15', '00', '03.012.002_47533_ComSoVb','912020000000000000,9120200000000000001'),
                     ('0021', '500', '13', '00', '02.001.005_45343_CoDowFF','453432352436453276,45343221651354151,4534352543276345');
 
-INSERT INTO tpp_product
-                    (id, product_code_id, client_id)
-                    VALUES
-                    (1, 1, 15);
+--INSERT INTO tpp_product
+--                    (id, product_code_id, client_id, number)
+--                    VALUES
+ --                   (1, 1, 15, '1');
+
+--INSERT INTO tpp_product (id, agreement_id, product_code_id, client_id, number)
+--               values (2, 1, 1, 15, '1/1');

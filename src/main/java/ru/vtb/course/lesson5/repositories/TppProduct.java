@@ -3,6 +3,7 @@ package ru.vtb.course.lesson5.repositories;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -26,14 +27,11 @@ public class TppProduct {
     @Column(name = "priority")
     private Integer priority;
     @Column(name = "date_of_conclusion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateOfConclusion;
+    private LocalDate dateOfConclusion;
     @Column(name = "start_date_time")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date startDateTime;
+    private LocalDate startDateTime;
     @Column(name = "end_date_time")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date endDateTime;
+    private LocalDate endDateTime;
     @Column(name = "days")
     private Integer days;
     @Column(name = "penalty_rate")
@@ -112,27 +110,27 @@ public class TppProduct {
         this.priority = priority;
     }
 
-    public Date getDateOfConclusion() {
+    public LocalDate getDateOfConclusion() {
         return dateOfConclusion;
     }
 
-    public void setDateOfConclusion(Date dateOfConclusion) {
+    public void setDateOfConclusion(LocalDate dateOfConclusion) {
         this.dateOfConclusion = dateOfConclusion;
     }
 
-    public Date getStartDateTime() {
+    public LocalDate getStartDateTime() {
         return startDateTime;
     }
 
-    public void setStartDateTime(Date startDateTime) {
+    public void setStartDateTime(LocalDate startDateTime) {
         this.startDateTime = startDateTime;
     }
 
-    public Date getEndDateTime() {
+    public LocalDate getEndDateTime() {
         return endDateTime;
     }
 
-    public void setEndDateTime(Date endDateTime) {
+    public void setEndDateTime(LocalDate endDateTime) {
         this.endDateTime = endDateTime;
     }
 
