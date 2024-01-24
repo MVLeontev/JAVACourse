@@ -51,7 +51,7 @@ public class ProductRequest {
     private String urgencyCode;
     private Long referenceCode;
     private ProductAdditionalPropertiesData additionalPropertiesVip;
-    private @Valid ArrayList<ProductInstanceArrangement> instanceArrangement;
+    private @Valid ArrayList<ProductInstanceArrangement> instanceArrangement = new ArrayList<>();
 
     public ProductRequest() {
     }
