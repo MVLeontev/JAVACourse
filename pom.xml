@@ -14,7 +14,7 @@
 	<name>lesson5</name>
 	<description>Микросервис Продуктовый учет</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

@@ -4,34 +4,44 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import ru.vtb.course.lesson5.dto.AccountRequest;
 import ru.vtb.course.lesson5.dto.AccountResponse;
+import ru.vtb.course.lesson5.exceptions.DuplicateException;
 import ru.vtb.course.lesson5.repositories.TppProductRegister;
-import ru.vtb.course.lesson5.repositories.TppProductRegisterRepo;
-import ru.vtb.course.lesson5.services.common.CheckAccountByProductAndTypeServiceable;
-import ru.vtb.course.lesson5.services.common.CheckAccountByProductRegisterTypeCodeServiceable;
+
+
 
 @Service
 public class AccountService implements AccountServiceable{
 
-    private final TppProductRegisterRepo accountRepo;
     private final PrepareAccountServiceable prepareAccountServiceable;
-    private final CheckAccountByProductAndTypeServiceable checkAccountByProductAndTypeServiceable;
-    private final CheckAccountByProductRegisterTypeCodeServiceable checkAccountByProductRegisterTypeCodeServiceable;
+    private final ProductServiceable productServiceable;
 
 
-    public AccountService(TppProductRegisterRepo accountRepo, PrepareAccountServiceable prepareAccountServiceable, CheckAccountByProductAndTypeServiceable checkAccountByProductAndTypeServiceable, CheckAccountByProductRegisterTypeCodeServiceable checkAccountByProductRegisterTypeCodeServiceable) {
-        this.accountRepo = accountRepo;
+    public AccountService(PrepareAccountServiceable prepareAccountServiceable, ProductServiceable productServiceable) {
         this.prepareAccountServiceable = prepareAccountServiceable;
-        this.checkAccountByProductAndTypeServiceable = checkAccountByProductAndTypeServiceable;
-        this.checkAccountByProductRegisterTypeCodeServiceable = checkAccountByProductRegisterTypeCodeServiceable;
+        this.productServiceable = productServiceable;
     }
 
     @Override
     @Transactional
     public AccountResponse makeAccount(AccountRequest accountRequest) {
-        checkAccountByProductAndTypeServiceable.checkAccountByProductAndType(accountRequest);
-        checkAccountByProductRegisterTypeCodeServiceable.checkAccountByProductRegisterTypeCode(accountRequest);
+        checkAccountByProductAndType(accountRequest);
+        productServiceable.checkAccountByProductRegisterTypeCode(accountRequest);
         TppProductRegister tppProductRegister = prepareAccountServiceable.prepareAccount(accountRequest);
-
-        return new AccountResponse( String.valueOf(accountRepo.save(tppProductRegister).getId()) );
+        tppProductRegister.setProductId(productServiceable.findProduct(accountRequest.getInstanceId()));
+        return new AccountResponse( String.valueOf(prepareAccountServiceable.saveAccount(tppProductRegister)) );
     }
+
+    @Override
+    public void checkAccountByProductAndType(AccountRequest accountRequest) {
+        TppProductRegister[] accArr = prepareAccountServiceable.findByProdIdAndType(
+                productServiceable.findProduct(accountRequest.getInstanceId()),
+                accountRequest.getRegistryTypeCode()
+        );
+        if (accArr.length > 0) {
+            throw new DuplicateException(
+                    "Параметр registryTypeCode тип регистра <" + accountRequest.getRegistryTypeCode() +
+                            "> уже существует для ЭП с ИД  <" + accountRequest.getInstanceId() + ">");
+        }
+    }
+
 }

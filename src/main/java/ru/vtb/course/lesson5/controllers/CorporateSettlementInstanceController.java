@@ -16,7 +16,6 @@ public class CorporateSettlementInstanceController {
     }
 
     @PostMapping("/create")
-    @ResponseBody
     public ResponseEntity<?> createProduct(@RequestBody @Valid ProductRequest productRequest) {
 
         return ResponseEntity.ok(productService.makeProduct(productRequest));

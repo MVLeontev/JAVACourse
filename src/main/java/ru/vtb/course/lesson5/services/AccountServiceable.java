@@ -5,4 +5,5 @@ import ru.vtb.course.lesson5.dto.AccountResponse;
 
 public interface AccountServiceable {
     public AccountResponse makeAccount(AccountRequest accountRequest);
+    public void checkAccountByProductAndType(AccountRequest accountRequest);
 }

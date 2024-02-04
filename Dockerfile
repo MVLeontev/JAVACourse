@@ -11,7 +11,8 @@ COPY pom.xml /app
 RUN mvn -f /app/pom.xml clean install -DskipTests=true
 
 # Package
-FROM openjdk:21
+#FROM openjdk:21
+FROM bellsoft/liberica-runtime-container:jdk-all-slim-glibc
 # скопируем получившийся jar из target в app
 COPY --from=build /app/target/lesson5-1.0.0.jar /app/MyApp-1.0.0.jar
 # порт контейнера

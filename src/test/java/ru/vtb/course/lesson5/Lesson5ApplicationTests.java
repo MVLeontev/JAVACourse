@@ -20,6 +20,8 @@ import ru.vtb.course.lesson5.dto.*;
 import ru.vtb.course.lesson5.exceptions.DuplicateException;
 import ru.vtb.course.lesson5.exceptions.NotFoundException;
 import ru.vtb.course.lesson5.repositories.*;
+import ru.vtb.course.lesson5.services.AccountServiceable;
+import ru.vtb.course.lesson5.services.ProductServiceable;
 import ru.vtb.course.lesson5.services.common.*;
 
 import java.math.BigDecimal;
@@ -51,16 +53,12 @@ class Lesson5ApplicationTests {
 	GenerateClientIdByMdmServiceable generateClientIdByMdmServisable;
 	@Autowired
 	ObjectMapper mapper = new ObjectMapper();
+
 	@Autowired
-	CheckAccountByProductAndTypeServiceable checkAccountByProductAndType;
+	ProductServiceable productServiceable;
 	@Autowired
-	FindProductServiceable findProductServiceable;
-	@Autowired
-	CheckAccountByProductRegisterTypeCodeServiceable checkAccountByProductRegisterTypeCodeServiceable;
-	@Autowired
-	CheckProductByNumServiceable checkProductByNumServiceable;
-	@Autowired
-	CheckProductArrangementByNumServiceable checkProductArrangementByNumServiceable;
+	AccountServiceable accountServiceable;
+
 
 	AccountRequest testAccount(){
 		AccountRequest acc = new AccountRequest();
@@ -80,17 +78,17 @@ class Lesson5ApplicationTests {
 		ProductInstanceArrangement pia1 = new ProductInstanceArrangement();
 		pia1.setNumber("100/1");
 		pia1.setOpeningDate(LocalDate.parse("01-01-2024", dateFormat));
-		pia1.setArrangementType(EnumArrangementType.НСО);
+		pia1.setArrangementType(EnumArrangementType.NSO);
 		pia1.setCoefficientAction(EnumCoefficientAction.PLUS);
 		ProductInstanceArrangement pia2 = new ProductInstanceArrangement();
 		pia2.setNumber("100/2");
 		pia2.setOpeningDate(LocalDate.parse("02-01-2024", dateFormat));
-		pia2.setArrangementType(EnumArrangementType.ЕЖО);
+		pia2.setArrangementType(EnumArrangementType.EZHO);
 		pia2.setCoefficientAction(EnumCoefficientAction.PLUS);
 		instanceArrangements.add(pia1);
 		instanceArrangements.add(pia2);
 		ProductRequest pr = new ProductRequest();
-		pr.setProductType(EnumProductType.ЕЖО);
+		pr.setProductType(EnumProductType.EZHO);
 		pr.setProductCode("03.012.002");
 		pr.setRegisterType("1");
 		pr.setMdmCode("15");
@@ -141,7 +139,7 @@ class Lesson5ApplicationTests {
 	}
 
 	@Test
-	@DisplayName("Тестирование сервиса CheckAccountByProductAndTypeService")
+	@DisplayName("Тестирование сервиса CheckAccountByProductAndTypeServic e")
 	void testCheckAccountByProductAndTypeService(){
 		accountRepo.deleteAll();
 		productRepo.deleteAll();
@@ -152,11 +150,11 @@ class Lesson5ApplicationTests {
 		Long prodId = productRepo.save(pr).getId();
 		acc.setInstanceId(prodId);
 		TppProductRegister register = new TppProductRegister();
-		register.setProductId(findProductServiceable.findProduct(acc.getInstanceId()));
+		register.setProductId(productServiceable.findProduct(acc.getInstanceId()));
 		register.setType( acc.getRegistryTypeCode()) ;
 		register.setCurrencyCode(acc.getCurrencyCode());
 		accountRepo.save(register);
-		Assertions.assertThrows(DuplicateException.class, () ->  checkAccountByProductAndType.checkAccountByProductAndType(acc));
+		Assertions.assertThrows(DuplicateException.class, () ->  accountServiceable.checkAccountByProductAndType(acc));
 	}
 
 	@Test
@@ -171,13 +169,13 @@ class Lesson5ApplicationTests {
 		Long prodId = productRepo.save(pr).getId();
 		acc.setInstanceId(prodId);
 		TppProductRegister register = new TppProductRegister();
-		register.setProductId(findProductServiceable.findProduct(acc.getInstanceId()));
+		register.setProductId(productServiceable.findProduct(acc.getInstanceId()));
 		register.setType( acc.getRegistryTypeCode()) ;
 		register.setCurrencyCode(acc.getCurrencyCode());
 		accountRepo.save(register);
-		checkAccountByProductRegisterTypeCodeServiceable.checkAccountByProductRegisterTypeCode(acc);
+		productServiceable.checkAccountByProductRegisterTypeCode(acc);
 		acc.setRegistryTypeCode("03.012.002_47533_###");
-		Assertions.assertThrows(NotFoundException.class, () -> checkAccountByProductRegisterTypeCodeServiceable.checkAccountByProductRegisterTypeCode(acc));
+		Assertions.assertThrows(NotFoundException.class, () -> productServiceable.checkAccountByProductRegisterTypeCode(acc));
 	}
 
 	@Test
@@ -190,7 +188,7 @@ class Lesson5ApplicationTests {
 		pr.setProductCodeId(refProductClassRepo.findByValue("03.012.002"));
 		pr.setClientId(generateClientIdByMdmServisable.generateClientIdByMdm("15"));
 		Long prodId = productRepo.save(pr).getId();
-		Assertions.assertThrows(DuplicateException.class, () -> checkProductByNumServiceable.checkProductByNum("007") );
+		Assertions.assertThrows(DuplicateException.class, () -> productServiceable.checkProductByNum("007") );
 	}
 
 	@Test
@@ -203,7 +201,7 @@ class Lesson5ApplicationTests {
 		pr.setAgreementId(7L);
 		Long prodId = productRepo.save(pr).getId();
 		ProductRequest request = testProduct();
-		Assertions.assertThrows(DuplicateException.class, () -> checkProductArrangementByNumServiceable.checkProductArrangementByNum(request));
+		Assertions.assertThrows(DuplicateException.class, () -> productServiceable.checkProductArrangementByNum(request));
 
 	}
 	@Test

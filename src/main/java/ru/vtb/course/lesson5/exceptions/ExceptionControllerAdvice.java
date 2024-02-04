@@ -18,7 +18,6 @@ public class ExceptionControllerAdvice {
     // обработка ошибок валидации @Valid
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
     public ResponceExceptionClass validationErrorHandler(MethodArgumentNotValidException e) {
         FieldError fieldError = e.getBindingResult().getFieldError();
         StackTraceElement[] stack = e.getStackTrace();
@@ -29,7 +28,6 @@ public class ExceptionControllerAdvice {
     //обработка ошибок парсинга JSON
     @ExceptionHandler(JacksonException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
     public ResponceExceptionClass handleException(JacksonException e) {
 
         StackTraceElement[] stack = e.getStackTrace();
@@ -40,7 +38,6 @@ public class ExceptionControllerAdvice {
     //обработка ошибок поиска
     @ExceptionHandler(DuplicateException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
     public ResponceExceptionClass handleDuplicateException(DuplicateException e) {
         String message = e.getMessage();
         StackTraceElement[] stack = e.getStackTrace();
@@ -49,7 +46,6 @@ public class ExceptionControllerAdvice {
 
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ResponseBody
     public ResponceExceptionClass handleNotFoundException(NotFoundException e) {
         String message = e.getMessage();
         StackTraceElement[] stack = e.getStackTrace();
@@ -58,7 +54,6 @@ public class ExceptionControllerAdvice {
     //обработка всех возможных ошибок
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ResponseBody
     public ResponceExceptionClass handleAllException(Exception e) {
         String message = e.getMessage();
         StackTraceElement[] stack = e.getStackTrace();

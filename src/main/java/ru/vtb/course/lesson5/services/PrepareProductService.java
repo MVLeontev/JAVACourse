@@ -5,7 +5,6 @@ import ru.vtb.course.lesson5.dto.ProductInstanceArrangement;
 import ru.vtb.course.lesson5.dto.ProductRequest;
 import ru.vtb.course.lesson5.repositories.TppProduct;
 
-import ru.vtb.course.lesson5.repositories.TppRefProductClassRepo;
 import ru.vtb.course.lesson5.services.common.GenerateClientIdByMdmServiceable;
 
 
@@ -13,20 +12,15 @@ import ru.vtb.course.lesson5.services.common.GenerateClientIdByMdmServiceable;
 @Service
 public class PrepareProductService implements PrepareProductServiceable{
 
-    private final TppRefProductClassRepo refProductClassRepo;
     private final GenerateClientIdByMdmServiceable generateClientIdByMdmServisable;
 
-
-
-    public PrepareProductService(TppRefProductClassRepo refProductClassRepo, GenerateClientIdByMdmServiceable generateClientIdByMdmServisable) {
-        this.refProductClassRepo = refProductClassRepo;
+    public PrepareProductService(GenerateClientIdByMdmServiceable generateClientIdByMdmServisable) {
         this.generateClientIdByMdmServisable = generateClientIdByMdmServisable;
     }
+
     @Override
     public TppProduct prepareProduct(ProductRequest pr) {
         TppProduct mainProd = new TppProduct();
-        //product_code_id
-        mainProd.setProductCodeId( refProductClassRepo.findByValue(pr.getProductCode()) );
         mainProd.setClientId(generateClientIdByMdmServisable.generateClientIdByMdm(pr.getMdmCode()));
         mainProd.setType(pr.getProductType().name());
         mainProd.setNumber(pr.getContractNumber());

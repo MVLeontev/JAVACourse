@@ -18,7 +18,6 @@ public class CorporateSettlementAccountController {
     }
 
     @PostMapping(value = "/create")
-    @ResponseBody
     public ResponseEntity<?> createAccount(@RequestBody @Valid AccountRequest accountRequest){  //@Valid
         //return null;
         return ResponseEntity.ok(  accountServiceable.makeAccount(accountRequest) )  ;
